@@ -1,8 +1,9 @@
-## DevMemory
+## OLX (clone/frontend)
 
-Partica com React e interação com api , utilizando Axios e React-Routes.
+Partica com React, interação com api, paginação com React-Routes , estilização com styled-components.
 
-Acesse: [Deploy](https://react-album-ph.netlify.app)
+A api pode estar fora do ar Regularmente.
+No Futuro farei o backend.
 
 
 

@@ -2,9 +2,7 @@
 
 Partica com React, interação com api, paginação com React-Routes , estilização com styled-components.
 
-A api pode estar fora do ar Regularmente.
-No Futuro farei o backend.
-
+Backend - (https://github.com/Paulovct/OLX-backend)
 
 
 ## Instalação

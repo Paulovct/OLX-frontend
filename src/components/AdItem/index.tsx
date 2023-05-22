@@ -19,9 +19,11 @@ export const AdItem = (props:Props)=>{
 
 	return(
 		<Item className="adItem">
-			<Link to={`/ad/${props.data.id}`}>
+			<Link to={`/ad/${props.data._id}`}>
 				<div className="itemImage">
-					<img src={props.data.image} alt="" />
+					<img src={`${props.data.images != undefined ?
+					"http://localhost:3000/media/"+props.data.images[0].url : props.data.image}
+					 `} alt="" />
 				</div>
 				<div className="itemName">
 					{props.data.title}

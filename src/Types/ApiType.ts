@@ -7,6 +7,7 @@ export type AdInfoType = {
 
 export type AdItemType = {
 	id:string;
+	_id:string;
 	title:string;
 	price:number;
 	priceNegotiable:boolean;
@@ -14,6 +15,10 @@ export type AdItemType = {
 	dateCreated:number;
 	views:number;
 	image:string;
+	images:[{
+		url:string;
+	default:boolean;
+	}]
 	category:{
 		id:string;
 		name:string;
@@ -24,7 +29,6 @@ export type AdItemType = {
 		email:string;
 	};
 	stateName:string;
-	images:string[];
 	others:Other[];
 }
 export type Other = {

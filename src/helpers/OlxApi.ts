@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import QueryString from "qs";
 
 
-const base = "http://alunos.b7web.com.br:501";
+const base = "http://localhost:3000";
 
 type Options = {
 	sort:string;
@@ -114,7 +114,7 @@ export const apiFetchGet = async (endpoint:string , body?:any | [] )=>{
 		const json = await apiFetchGet(
 			"/categories"
 		)
-		return json.categories;
+		return json;
 	},
 
 	getAds: async(options:Options)=>{
@@ -128,7 +128,7 @@ export const apiFetchGet = async (endpoint:string , body?:any | [] )=>{
 
 	getAd: async (id ?:string, other = false)=>{
 		const json = await apiFetchGet(
-			"/ad/item",
+			`/ad/item`,
 			{id,other}
 		)
 		return  json ;
@@ -138,6 +138,13 @@ export const apiFetchGet = async (endpoint:string , body?:any | [] )=>{
 		const json = await apiFetchFile(
 			"/ad/add",
 			fData
+		);
+		return json;
+	},
+	getInfo:async(token:string)=>{
+		const json = await apiFetchGet(
+			"/user/me",
+			{token}
 		);
 		return json;
 	}

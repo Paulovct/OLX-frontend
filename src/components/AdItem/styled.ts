@@ -4,6 +4,7 @@ export const Item = styled.div`
 	a{
 		display:block;
 		border:1px solid #FFF;
+		min-height:130px;
 		margin:10px;
 		text-decoration:none;
 		padding:10px;

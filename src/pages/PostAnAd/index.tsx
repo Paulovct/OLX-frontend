@@ -8,6 +8,7 @@ import MaskedInput from "react-text-mask";
 import React, { useEffect, useRef, useState } from "react";
 //helpers
 import  OlxApi from "../../helpers/OlxApi"
+import Cookies from "js-cookie";
 
 
 const PostAnAd = ()=>{
@@ -29,7 +30,7 @@ const PostAnAd = ()=>{
 
 
  	useEffect(()=>{
- 		const getCategories =async()=>{ 
+ 		const getCategories = async()=>{ 
  			const cats = await OlxApi.getCategories();
 	 		setCategories(cats);
  		}
@@ -49,6 +50,11 @@ const PostAnAd = ()=>{
 		if(!category){
 			errors.push("Sem Categoria")
 		}
+		let token = Cookies.get("token");
+		if(!token){
+			errors.push("Execute o Login Novamente")
+			return;
+		}
 
 		if(errors.length === 0){
 
@@ -58,6 +64,7 @@ const PostAnAd = ()=>{
 			fData.append("priceneg" , String(priceNegotiable));
 			fData.append("desc",desc);
 			fData.append("cat",category);
+			fData.append("token" , token as string);
 
 			if(fileField.current.files.length > 0 ){
 				for(let i = 0 ; i < fileField.current.files.length ; i++ ){
@@ -121,7 +128,7 @@ const PostAnAd = ()=>{
 							onChange={e=>setCategory(e.target.value)}>
 								<option ></option>
 								{categories &&
-									categories.map((e:any)=>
+									categories.map((e:{_id:string , name:string})=>
 										<option key={e._id} value={e._id}>{e.name}</option>
 									)
 								}
